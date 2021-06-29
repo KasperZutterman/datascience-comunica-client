@@ -65,6 +65,14 @@
     {
       "name": "SNCB",
       "url": "https://graph.irail.be/sncb/connections"
+    },
+    {
+      "name": "Kadaster-NL",
+      "url": "sparql@https://api.labs.kadaster.nl/datasets/kadaster/Kadaster-Registratieve-Linked-Data/services/registraties/sparql"
+    },
+    {
+      "name": "Kadaster-NL-KG",
+      "url": "sparql@https://api.labs.kadaster.nl/datasets/kadaster/kg/services/default/sparql"
     }
   ],
   "prefixes": {
