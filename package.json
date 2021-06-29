@@ -1,0 +1,17 @@
+{
+  "name": "datascience-comunica-client",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@comunica/web-client-generator": "^1.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kadaster/datascience-comunica-client.git"
+  },
+  "homepage": "https://github.com/kadaster/datascience-comunica-client#readme",
+  "scripts": {
+    "build": "comunica-web-client-generator -s settings.json -q queries"
+  }
+}
