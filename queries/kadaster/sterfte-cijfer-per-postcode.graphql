@@ -1,0 +1,28 @@
+# Sterfte cijfer per postcode
+# Datasource: sparql@https://api.labs.kadaster.nl/datasets/kadaster/Kadaster-Registratieve-Linked-Data/services/registraties/sparql
+query {
+  postcode(_:"9718")
+  postcode
+  jaar { label }
+  sterfte
+  spatial
+  spatial {
+    label
+    geometry
+    geometry {
+      wkt
+    }
+  }
+}
+
+{
+  "@context": {
+    "label": "http://www.w3.org/2000/01/rdf-schema#label",
+    "geometry": "http://www.opengis.net/ont/geosparql#hasGeometry",
+    "wkt": "http://www.opengis.net/ont/geosparql#asWKT",
+    "postcode": "https://data.labs.kadaster.nl/cbs/wbk/vocab/postcode",
+    "sterfte": "https://data.labs.kadaster.nl/cbs/wbk/vocab/sterfte",
+    "spatial": "https://data.labs.kadaster.nl/cbs/wbk/vocab/spatialExtent",
+    "jaar": "https://data.labs.kadaster.nl/cbs/wbk/vocab/temporalExtent"
+  }
+}

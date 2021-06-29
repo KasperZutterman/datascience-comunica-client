@@ -1,0 +1,19 @@
+# Oude Molen geometry information
+# Datasource: sparql@https://api.labs.kadaster.nl/datasets/kadaster/Kadaster-Registratieve-Linked-Data/services/registraties/sparql
+query {
+  naam(_:"Oude Molen")
+  id
+  geometry @single
+  geometry {
+    wkt
+  }
+}
+
+{
+  "@context": {
+    "city": "https://data.labs.kadaster.nl/cbs/wbk/vocab/Gemeente",
+    "geometry": "http://www.opengis.net/ont/geosparql#hasGeometry",
+    "wkt": "http://www.opengis.net/ont/geosparql#asWKT",
+    "naam": {"@id": "http://brt.basisregistraties.overheid.nl/def/top10nl#naam", "@language": "nl" }
+  }
+}
