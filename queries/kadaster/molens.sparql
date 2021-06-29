@@ -1,0 +1,9 @@
+# Toon alle windmolens
+# Datasource: sparql@https://api.labs.kadaster.nl/datasets/kadaster/Kadaster-Registratieve-Linked-Data/services/registraties/sparql
+SELECT *
+WHERE {
+  ?molen a <http://brt.basisregistraties.overheid.nl/def/top10nl#Windmolen>.
+  ?molen rdfs:label ?wktLabel.
+  ?molen <http://www.opengis.net/ont/geosparql#hasGeometry> ?geometry.
+  ?geometry <http://www.opengis.net/ont/geosparql#asWKT> ?wkt.
+}
