@@ -3,10 +3,6 @@
 prefix bgt: <https://bgt.basisregistraties.overheid.nl/bgt/def/>
 prefix bif: <http://www.openlinksw.com/schemas/bif#>
 prefix geo: <http://www.opengis.net/ont/geosparql#>
-prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-prefix sdo: <https://schema.org/>
-prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix wbk: <https://data.labs.kadaster.nl/cbs/wbk/vocab/>
 select * {
   {

@@ -1,18 +1,16 @@
 # Waar is 'iets' in de buurt
 # Datasource: sparql@https://api.labs.kadaster.nl/datasets/kadaster/kg/services/default/sparql
 PREFIX brt: <https://brt.basisregistraties.overheid.nl/brt/def/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sdo: <https://schema.org/>
+PREFIX schema: <https://schema.org/>
 PREFIX typeGebouw: <https://brt.basisregistraties.overheid.nl/brt/id/typeGebouw/>
 SELECT ?address ?types ?polygon WHERE {
   {
     SELECT ?place ?address ?polygon (GROUP_CONCAT(DISTINCT STR(?type); SEPARATOR = ", ") AS ?types) WHERE {
-      ?place (sdo:additionalType/rdfs:label) "school"@nl;
-        (sdo:additionalType/rdfs:label) ?type;
-        (sdo:address/sdo:name) ?address;
-        (sdo:containedInPlace/sdo:name) "Rotterdam"@nl;
-        (sdo:geo/sdo:polygon) ?polygon.
+      ?place (schema:additionalType/rdfs:label) "school"@nl;
+        (schema:additionalType/rdfs:label) ?type;
+        (schema:address/schema:name) ?address;
+        (schema:containedInPlace/schema:name) "Rotterdam"@nl;
+        (schema:geo/schema:polygon) ?polygon.
     }
   }
 }
