@@ -1,0 +1,25 @@
+# Waar zijn de scholen
+# Datasource: sparql@https://api.labs.kadaster.nl/datasets/kadaster/kg/services/default/sparql
+query {
+  id
+  naam
+  type(_:school)
+  locatie {
+    naam
+  }
+  geometry
+  geometry {
+    wkt
+  } 
+}
+
+{
+  "@context": {
+    "geometry": "https://schema.org/geo",
+    "wkt": "https://schema.org/polygon",
+    "type": "https://schema.org/additionalType",
+    "school": "https://brt.basisregistraties.overheid.nl/brt/id/typeGebouw/school",
+    "naam": "https://schema.org/name",
+    "locatie": "https://schema.org/containedInPlace"
+  }
+}

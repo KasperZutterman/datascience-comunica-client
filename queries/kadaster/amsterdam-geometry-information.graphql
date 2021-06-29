@@ -1,0 +1,20 @@
+# Amsterdam geometry information
+# Datasource: sparql@https://api.labs.kadaster.nl/datasets/kadaster/Kadaster-Registratieve-Linked-Data/services/registraties/sparql
+query @single(scope: all) {
+  label_nl(_:"Amsterdam")
+  city: id @single
+  geometry @single
+  geometry {
+    wkt
+  }
+}
+
+{
+  "@context": {
+    "label": "http://www.w3.org/2000/01/rdf-schema#label",
+    "label_nl": { "@id": "http://www.w3.org/2000/01/rdf-schema#label", "@language": "nl" },
+    "city": "https://data.labs.kadaster.nl/cbs/wbk/vocab/Gemeente",
+    "geometry": "http://www.opengis.net/ont/geosparql#hasGeometry",
+    "wkt": "http://www.opengis.net/ont/geosparql#asWKT"
+  }
+}

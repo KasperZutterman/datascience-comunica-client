@@ -1,0 +1,30 @@
+# Aantal speelplaatsen per bronhouder
+# Datasource: sparql@https://api.labs.kadaster.nl/datasets/kadaster/Kadaster-Registratieve-Linked-Data/services/registraties/sparql
+prefix bgt: <https://bgt.basisregistraties.overheid.nl/bgt/def/>
+prefix bif: <http://www.openlinksw.com/schemas/bif#>
+prefix geo: <http://www.opengis.net/ont/geosparql#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix sdo: <https://schema.org/>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix wbk: <https://data.labs.kadaster.nl/cbs/wbk/vocab/>
+select * {
+  {
+    select ?bronhouderNaam (sample(?shape) as ?shape) (count(?gebied) as ?n) {
+      ?bronhouder skos:prefLabel ?bronhouderNaam.
+      ?gebied
+        bgt:bronhouder ?bronhouder;
+        bgt:plusType ?type;
+        bgt:geometrie ?rd.
+      filter(?type in (bgt:Park, bgt:Speeltuin, bgt:Speelvoorziening))
+      bind(bif:ST_Transform(?rd, 4326) as ?shape)
+    }
+    order by desc(?n)
+    limit 10
+  }
+  bind(replace(str(?n),'[0-9](?=(?:[0-9]{3})+(?![0-9]))','$0,') as ?nLeesbaar)
+  bind('''
+    <p><a href="{{gebied}}" target="_blank">{{bronhouderNaam}}</a></p>
+    <p>Aantal speelvoorzieningen: {{nLeesbaar}}</p>'''^^rdf:HTML as ?shapeLabel)
+}
+
