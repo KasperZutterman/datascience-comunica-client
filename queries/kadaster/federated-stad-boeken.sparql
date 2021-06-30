@@ -1,0 +1,17 @@
+# Federated query, steden en hun reisgidsen
+# Datasource: sparql@https://api.labs.kadaster.nl/datasets/kadaster/Kadaster-Registratieve-Linked-Data/services/registraties/sparql //fragments.dbpedia.org/2016-04/en
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# This query retrieves all cities from Kadaster-NL, and matches all chapter citations from DBpedia
+# The matched chapters are mainly travel guides with a dedicated chapter for the city
+
+SELECT *
+WHERE {
+  	?gemeente a <https://data.labs.kadaster.nl/cbs/wbk/vocab/Gemeente>.
+  	?gemeente rdfs:label ?gemeenteNaam.
+    BIND (STR(?gemeenteNaam) AS ?gemeenteNaamString)
+    ?wktLabel <http://dbpedia.org/property/chapter> ?gemeenteNaamString
+} 
+LIMIT 100
+
+
